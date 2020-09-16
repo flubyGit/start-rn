@@ -1,16 +1,11 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
-import { Random } from "./components/Random";
+import MinMax from "../components/MinMax";
 
 export default () => (
   <View style={styles?.App}>
-    <Random n1={10} n2={30} />
-    <Random n1={10} n2={30} />
-    <Random n1={10} n2={30} />
-    <Random n1={10} n2={30} />
-    <Random n1={10} n2={30} />
-    <Random n1={10} n2={30} />
-    <Random n1={10} n2={30} />
+    <MinMax min="3" max="30" />
+    <MinMax min={3} max={93} />
   </View>
 );
 
