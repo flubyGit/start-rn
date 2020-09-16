@@ -1,8 +1,12 @@
 import React from "react";
-import { Text } from "react-native";
+import { View } from "react-native";
 
-export default function App() {
-  // const jsx = <Text>Primeiro componente</Text>;
-  // return jsx;
-  return <Text>First component</Text>;
-}
+import ExportDefaultComp, { Comp1, Comp2 } from "./components/Multi";
+
+export default () => (
+  <View>
+    <ExportDefaultComp />
+    <Comp1 />
+    <Comp2 />
+  </View>
+);
