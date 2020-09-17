@@ -1,6 +1,6 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
-import CheckoutPlatform from "./src/components/CheckoutPlatform";
+import CheckoutPlatform from "../components/CheckoutPlatform";
 
 export default () => (
   <View style={styles?.App}>
