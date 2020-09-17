@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "lessons",
-    "entryPoint:":"./src/App.js",
+    "entryPoint":"./src/App.js",
     "slug": "lessons",
     "version": "1.0.0",
     "orientation": "portrait",

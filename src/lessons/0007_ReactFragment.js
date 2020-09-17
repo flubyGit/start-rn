@@ -1,10 +1,10 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
-import Button from "./components/Button";
+import Frag from "../components/Frag";
 
 export default () => (
   <View style={styles?.App}>
-    <Button />
+    <Frag main={"Register"} secondary={"Screen register product"} />
   </View>
 );
 
