@@ -1,0 +1,15 @@
+{
+  "FunctionalRNComponent": {
+    "scope": "javascript",
+    "prefix": "frnc",
+    "body": [
+      "import React, { useState } from 'react'",
+      "import { View } from 'react-native'",
+      "",
+      "export default props => {",
+      "   return <Text></Text>",
+      "}  ",
+    ],
+    "description": "Add rapid component functional in React Native"
+  }
+}

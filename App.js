@@ -1,10 +1,10 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
-import Button from "../components/Button";
+import Counter from "./src/components/Counter";
 
 export default () => (
   <View style={styles?.App}>
-    <Button />
+    <Counter initial={0} pass={13} />
   </View>
 );
 
