@@ -1,10 +1,10 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
-import ListProducts from "./src/products/listProductsv2";
+import CondicionalRendering from "../src/components/CondicionalRendering";
 
 export default () => (
   <View style={styles?.App}>
-    <ListProducts />
+    <CondicionalRendering />
   </View>
 );
 

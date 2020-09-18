@@ -1,10 +1,10 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
-import ListProducts from "./src/products/listProductsv2";
+import UserLogout from "../src/components/UserLogout";
 
 export default () => (
   <View style={styles?.App}>
-    <ListProducts />
+    <UserLogout user={{ name: "Gui", email: "gui@gmail.com" }} />
   </View>
 );
 
