@@ -1,0 +1,22 @@
+{
+  "FunctionalRNComponent": {
+    "scope": "javascript",
+    "prefix": "rnfc",
+    "body": [
+      "import React, { useState } from 'react'",
+      "import { View } from 'react-native'",
+      "",
+      "export default props => {",
+      "   return <Text></Text>",
+      "}  "
+    ],
+    "description": "Add rapid component functional in React Native"
+  },
+  "eslint.validate": ["javascript", "javascriptreact"],
+  "explorer.compactFolders": false,
+  "editor.formatOnPaste": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
+    "source.fixAll": true
+  }
+}
