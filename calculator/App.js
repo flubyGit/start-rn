@@ -3,19 +3,66 @@ import { StyleSheet, View } from "react-native";
 import Button from "./src/components/Button";
 import Display from "./src/components/Display";
 
-export default function App() {
-  const [displayValue, setDisplayValue] = useState("0");
+const initialState = {
+  displayValue: "0",
+  clearDisplay: false,
+  operation: null,
+  values: [0, 0],
+  current: 0,
+};
 
-  const addDigit = (n) => setDisplayValue(n);
-  const clearMemory = () => {
-    const display = 0;
-    setDisplayValue(display);
+export default function App() {
+  const [stateCalculator, setStateCalculator] = useState(initialState);
+
+  const addDigit = (n) => {
+    const { displayValue, clearDisplay, values, current } = stateCalculator;
+
+    const displayClear = displayValue === "0" || clearDisplay;
+    if (n === "." && !clearDisplay && displayValue.includes(".")) return;
+
+    const currentValue = displayClear ? "" : displayValue;
+    const displayValues = currentValue + n;
+
+    setStateCalculator({ displayValues, clearDisplay: false });
+
+    if (n !== ".") {
+      const newValue = parseFloat(displayValue);
+      const valuesArray = [...values];
+      valuesArray[current] = newValue;
+      setStateCalculator({ values: valuesArray });
+    }
   };
-  const setOperation = (operation) => {};
+  const clearMemory = () => {
+    setStateCalculator({ ...initialState });
+  };
+  const setOperation = (operation) => {
+    const { current, values } = stateCalculator;
+
+    if (current === 0)
+      setStateCalculator({ operation, current: 1, clearDisplay: true });
+    else {
+      const equals = operation === "=";
+
+      const values = [...values];
+      try {
+        v, (alues[0] = eval(`${values[0]} ${operation} ${values[1]}`));
+      } catch (error) {
+        values[0] = values[0];
+      }
+      values[1] = 0;
+      setStateCalculator({
+        displayValue: `${values[0]}`,
+        operation: equals ? null : operation,
+        current: equals ? 0 : 1,
+        clearDisplay: true,
+        values,
+      });
+    }
+  };
 
   return (
     <View style={styles.container}>
-      <Display value={displayValue} />
+      <Display value={stateCalculator.displayValue} />
       <View style={styles.buttons}>
         <Button label={"AC"} triple onClick={() => clearMemory()} />
         <Button label={"/"} operation onClick={() => setOperation("/")} />
