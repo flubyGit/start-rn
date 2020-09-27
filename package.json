@@ -8,6 +8,25 @@
     "web": "expo start --web",
     "eject": "expo eject"
   },
+    "author": {
+      "email": "profissionalf.andre@gmail.com",
+      "name": "Felipe André",
+      "url": "https://github.com/flubyGit/start-rn"
+    },
+    "description": "The initials fundaments using React Native and Expo",
+    "bugs": {
+      "url": "https://github.com/flubyGit/start-rn/issues",
+      "email": "profissionalf.andre@gmail.com"
+    },
+    "repository": {
+      "email": "profissionalf.andre@gmail.com",
+      "name": "Felipe André",
+      "url": "https://github.com/flubyGit/start-rn"
+    },
+    "keywords": [
+      "Fundaments",
+      "React Native"
+    ],
   "dependencies": {
     "expo": "~38.0.8",
     "expo-status-bar": "^1.0.2",

@@ -1,5 +1,7 @@
 import React from "react";
 
+import PropTypes from "prop-types";
+
 import { StyleSheet, Dimensions, TouchableHighlight, Text } from "react-native";
 
 const styles = StyleSheet.create({
@@ -25,16 +27,24 @@ const styles = StyleSheet.create({
   },
 });
 
-export default (props) => {
+export default function Button({ double, triple, operation, onClick, label }) {
   const stylesButton = [styles.button];
 
-  if (props.double) stylesButton.push(styles.buttonDouble);
-  if (props.triple) stylesButton.push(styles.buttonTriple);
-  if (props.operation) stylesButton.push(styles.operationButton);
+  if (double) stylesButton.push(styles.buttonDouble);
+  if (triple) stylesButton.push(styles.buttonTriple);
+  if (operation) stylesButton.push(styles.operationButton);
 
   return (
-    <TouchableHighlight onPress={props.onClick}>
-      <Text style={stylesButton}>{props.label}</Text>
+    <TouchableHighlight onPress={onClick}>
+      <Text style={stylesButton}>{label}</Text>
     </TouchableHighlight>
   );
+}
+
+Button.propTypes = {
+  double: PropTypes.bool.isRequired,
+  triple: PropTypes.bool.isRequired,
+  operation: PropTypes.bool.isRequired,
+  onClick: PropTypes.func.isRequired,
+  label: PropTypes.string.isRequired,
 };

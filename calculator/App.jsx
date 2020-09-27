@@ -1,3 +1,5 @@
+/* eslint-disable no-self-assign */
+/* eslint-disable prefer-destructuring */
 import React, { useState } from "react";
 import { StyleSheet, View } from "react-native";
 import Button from "./src/components/Button";
@@ -14,7 +16,7 @@ const initialState = {
 export default function App() {
   const [stateCalculator, setStateCalculator] = useState(initialState);
 
-  const addDigit = (n) => {
+  const addDigit = n => {
     const { displayValue, clearDisplay, values, current } = stateCalculator;
 
     const displayClear = displayValue === "0" || clearDisplay;
@@ -35,7 +37,7 @@ export default function App() {
   const clearMemory = () => {
     setStateCalculator({ ...initialState });
   };
-  const setOperation = (operation) => {
+  const setOperation = operation => {
     const { current, values } = stateCalculator;
 
     if (current === 0)
@@ -43,55 +45,56 @@ export default function App() {
     else {
       const equals = operation === "=";
 
-      const values = [...values];
+      const valuesArray = [...values];
       try {
-        v, (alues[0] = eval(`${values[0]} ${operation} ${values[1]}`));
+        valuesArray[0] = eval(
+          `${valuesArray[0]} ${operation} ${valuesArray[1]}`
+        );
       } catch (error) {
-        values[0] = values[0];
+        valuesArray[0] = valuesArray[0];
       }
-      values[1] = 0;
+      valuesArray[1] = 0;
       setStateCalculator({
-        displayValue: `${values[0]}`,
+        displayValue: `${valuesArray[0]}`,
         operation: equals ? null : operation,
         current: equals ? 0 : 1,
         clearDisplay: true,
-        values,
+        valuesArray,
       });
     }
   };
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+    },
+    buttons: {
+      flexDirection: "row",
+      flexWrap: "wrap",
+    },
+  });
 
   return (
     <View style={styles.container}>
       <Display value={stateCalculator.displayValue} />
       <View style={styles.buttons}>
-        <Button label={"AC"} triple onClick={() => clearMemory()} />
-        <Button label={"/"} operation onClick={() => setOperation("/")} />
-        <Button label={"7"} onClick={() => addDigit(7)} />
-        <Button label={"8"} onClick={() => addDigit(8)} />
-        <Button label={"9"} onClick={() => addDigit(9)} />
-        <Button label={"*"} operation onClick={() => setOperation("*")} />
-        <Button label={"4"} onClick={() => addDigit(4)} />
-        <Button label={"5"} onClick={() => addDigit(5)} />
-        <Button label={"6"} onClick={() => addDigit(6)} />
-        <Button label={"-"} operation onClick={() => setOperation("-")} />
-        <Button label={"1"} onClick={() => addDigit(1)} />
-        <Button label={"2"} onClick={() => addDigit(2)} />
-        <Button label={"3"} onClick={() => addDigit(3)} />
-        <Button label={"+"} operation onClick={() => setOperation("+")} />
-        <Button label={"0"} double onClick={() => addDigit(0)} />
-        <Button label={"."} onClick={() => setOperation(".")} />
-        <Button label={"="} onClick={() => setOperation("=")} />
+        <Button label="AC" triple onClick={() => clearMemory()} />
+        <Button label="/" operation onClick={() => setOperation("/")} />
+        <Button label="7" onClick={() => addDigit(7)} />
+        <Button label="8" onClick={() => addDigit(8)} />
+        <Button label="9" onClick={() => addDigit(9)} />
+        <Button label="*" operation onClick={() => setOperation("*")} />
+        <Button label="4" onClick={() => addDigit(4)} />
+        <Button label="5" onClick={() => addDigit(5)} />
+        <Button label="6" onClick={() => addDigit(6)} />
+        <Button label="-" operation onClick={() => setOperation("-")} />
+        <Button label="1" onClick={() => addDigit(1)} />
+        <Button label="2" onClick={() => addDigit(2)} />
+        <Button label="3" onClick={() => addDigit(3)} />
+        <Button label="+" operation onClick={() => setOperation("+")} />
+        <Button label="0" double onClick={() => addDigit(0)} />
+        <Button label="." onClick={() => setOperation(".")} />
+        <Button label="=" onClick={() => setOperation("=")} />
       </View>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  buttons: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-  },
-});

@@ -1,6 +1,0 @@
-node_modules/**/*
-.expo/*
-*.log
-
-# macOS
-.DS_Store

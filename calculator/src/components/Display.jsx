@@ -1,5 +1,5 @@
 import React from "react";
-
+import PropTypes from "prop-types";
 import { StyleSheet, Text, View } from "react-native";
 
 const styles = StyleSheet.create({
@@ -16,12 +16,16 @@ const styles = StyleSheet.create({
   },
 });
 
-export default (props) => {
+export default function Display({ value }) {
   return (
     <View style={styles.display}>
       <Text style={styles.displayValue} numberOfLines={1}>
-        {props.value}
+        {value}
       </Text>
     </View>
   );
+}
+
+Display.propTypes = {
+  value: PropTypes.string.isRequired,
 };
